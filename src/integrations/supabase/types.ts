@@ -14,7 +14,122 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          created_at: string | null
+          distance_km: number
+          end_address: string
+          end_lat: number
+          end_lng: number
+          fare: number
+          id: string
+          start_address: string
+          start_lat: number
+          start_lng: number
+          status: string | null
+          tier_id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          distance_km: number
+          end_address: string
+          end_lat: number
+          end_lng: number
+          fare: number
+          id?: string
+          start_address: string
+          start_lat: number
+          start_lng: number
+          status?: string | null
+          tier_id: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          distance_km?: number
+          end_address?: string
+          end_lat?: number
+          end_lng?: number
+          fare?: number
+          id?: string
+          start_address?: string
+          start_lat?: number
+          start_lng?: number
+          status?: string | null
+          tier_id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_tier_id_fkey"
+            columns: ["tier_id"]
+            isOneToOne: false
+            referencedRelation: "taxi_tiers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          full_name?: string | null
+          id: string
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      taxi_tiers: {
+        Row: {
+          base_price: number
+          capacity: number
+          created_at: string | null
+          description: string | null
+          id: string
+          image_url: string | null
+          name: string
+          price_per_km: number
+        }
+        Insert: {
+          base_price: number
+          capacity: number
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          price_per_km: number
+        }
+        Update: {
+          base_price?: number
+          capacity?: number
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          price_per_km?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
